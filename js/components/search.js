@@ -1,19 +1,18 @@
 /*Created by @miriam on 9/06/2017.
  */
 "use strict";
-const coderImage = (sede,update)=>{
-  const coderContainer = $('<div class="coder-container"></div>');
-  const coderImg = $(`<img src="" alt="">`);
+const coderImage = (coder,update)=>{
+  const containerImg = $('<div class="coder-img"></div>');
+  const coderImg = $(`<img src="images/${coder.sede}/${coder.image}" alt="coder laboratoria">`);
 
-
-  coderContainer.append(coderImg);
-  container.append(coderContainer);
-  return container;
+  containerImg.append(coderImg);
+  return containerImg;
 }
 
 const reRender = (coderContainer,sede, update)=>{
   coderContainer.empty();
-
+  const coderBySede = filterBySede(state.coder,sede);
+  coderContainer.append(coderImage(coderBySede,update));
 }
 
 const Play = (update)=>{
@@ -51,9 +50,9 @@ const Play = (update)=>{
   select.on('change', (e) =>{
     e.preventDefault();
     let sede = $('select option:selected').text();
-    // reRender(coderContainer,sede,update);
+    reRender(coderContainer,sede,update);
   });
-  // reRender(result,"",update);
+  //reRender(coderContainer,"",update);
 
   return playContainer;
 };

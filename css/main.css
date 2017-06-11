@@ -8,12 +8,13 @@ body {
   width: 100%;
 }
 .container {
+  margin-top: 50px;
   display: flex;
+
 }
 .coder-container {
   width: 40%;
   height: 300px;
-  /*display: inline-block;*/
 }
 
 .coder-container img {
