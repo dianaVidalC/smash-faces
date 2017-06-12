@@ -1,18 +1,16 @@
-/*Created by @miriam on 9/06/2017.
- */
+/*Created by @miriam on 9/06/2017*/
 "use strict";
 //Funcion que muestra la imagen de una coder de forma aleatoria
-const coderImage = (coder,update)=>{
+const coderImage = (coder)=>{
   const containerImg = $('<div class="coder-img"></div>');
   const coderImg = $(`<img src="images/${coder.sede}/${coder.image}" alt="coder laboratoria">`);
 
   containerImg.append(coderImg);
-  console.log(update);
   return containerImg;
 }
 
 //Funcion que comprueba nombre de coder
-const resultPlay = (checkName,update)=>{
+const resultPlay = (checkName)=>{
   const text = $(`<p>${checkName}</p>`);
   return text;
 }
@@ -22,21 +20,21 @@ const resultPoints = (checkPoint)=>{
   return points;
 }
 
-const reRender = (coderContainer,sede, update)=>{
+const reRender = (coderContainer,sede)=>{
   coderContainer.empty();
   const coderBySede = filterBySede(state.coder,sede);
-  coderContainer.append(coderImage(coderBySede,update));
+  coderContainer.append(coderImage(coderBySede));
 }
 
 const renderText = (textResult, name, points, update)=>{
   textResult.empty();
   points.empty();
   const check = checkName(state.selectedCoder,name,update);
-  textResult.append(resultPlay(check.msj,update));
+  textResult.append(resultPlay(check.msj));
   points.append(resultPoints(check.point));
 }
 
-const Play = (update)=>{
+const Play = _=>{
   const playContainer = $('<section class="play-container"></section>');
   const selectContainer = $('<div class="select-container"></div>');
   const container = $('<div class="container"></div>');
@@ -71,14 +69,17 @@ const Play = (update)=>{
   select.on('change', (e) =>{
     e.preventDefault();
     let sede = $('select option:selected').text();
-    reRender(coderContainer,sede,update);
+    reRender(coderContainer,sede);
     state.selectedSede = sede;
   });
-  //reRender(coderContainer,"",update);
   button.on('click',(e)=>{
     e.preventDefault();
-    renderText(textResult,input,divPoints,_=>{reRender(coderContainer,state.selectedSede);});
-    //renderPoints(divPoints);
+    if (state.selectedSede!=undefined) {
+      renderText(textResult,input,divPoints,_=>{reRender(coderContainer,state.selectedSede);});
+    }else {
+      textResult.text("Debe seleccionar una sede");
+      setTimeout(_=>{textResult.text("");},2000);
+    }
   });
 
   return playContainer;

@@ -1,9 +1,7 @@
 * {
   font-family: 'Rokkitt', serif;
 }
-body {
-  /*color: #fff;*/
-}
+
 .play-container {
   width: 100%;
 }
@@ -39,10 +37,13 @@ body {
   width: 80%;
   height: 30px;
   border: none;
+  margin: 14px 0;
+  padding: 0 7px;
 }
 .coder-search button {
   background: #f9a91a;
   color: #fff;
   border: none;
   padding: 10px;
+  margin-bottom: 14px;
 }

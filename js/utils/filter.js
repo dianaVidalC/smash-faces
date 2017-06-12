@@ -9,12 +9,13 @@ const filterBySede = (coder,sede)=>{
 
 var  point=0,intentos=0;
 const checkName = (coder,nameCoder,update) =>{
-  let message = {}, refresh;
-  if(coder.name == nameCoder.val()){
-    message={msj:"Excelente Acertaste",point:point+5};
+  let message = {};
+  if(coder.name.toLowerCase() == nameCoder.val().toLowerCase()){
     setTimeout(update,2000);
+    message={msj:"Excelente Acertaste",point:point+5};
     nameCoder.val("");
-    message.msj="";
+    //setTimeout(_=>{message.msj="";},2000);
+
   }else {
     message={msj:"Sigue Intentando",point:point};
     nameCoder.val("");
@@ -24,7 +25,6 @@ const checkName = (coder,nameCoder,update) =>{
       setTimeout(update,2000);
       intentos=0;
     }
-    console.log(intentos);
   }
   point=message.point;
   return message;

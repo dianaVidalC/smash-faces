@@ -2,10 +2,9 @@
 const render = (root)=>{
     root.empty();
     const wrapper = $('<div class="wrapper"></div>');
-    wrapper.append(Play(_=>render(root)));
+    wrapper.append(Play());
 
     root.append(wrapper);
-    //return root;
 };
 
 const state = [{
