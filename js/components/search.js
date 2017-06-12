@@ -14,18 +14,19 @@ const resultPlay = (checkName)=>{
   const text = $(`<p>${checkName}</p>`);
   return text;
 }
-
+//Funcion que obtiene los puntos ganados en el juego
 const resultPoints = (checkPoint)=>{
   const points = $(`<span>Puntos: ${checkPoint} puntos</span>`);
   return points;
 }
 
+//Funcion que pinta (renderiza) foto de la coder
 const reRender = (coderContainer,sede)=>{
   coderContainer.empty();
   const coderBySede = filterBySede(state.coder,sede);
   coderContainer.append(coderImage(coderBySede));
 }
-
+//Funcion que pinta (renderiza) texto y puntos segun la verificacion del nombre de coder
 const renderText = (textResult, name, points, update)=>{
   textResult.empty();
   points.empty();
