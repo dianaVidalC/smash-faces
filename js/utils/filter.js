@@ -14,14 +14,14 @@ const checkName = (coder,nameCoder,update) =>{
     setTimeout(update,2000);
     message={msj:"Excelente Acertaste",point:point+5};
     nameCoder.val("");
-    //setTimeout(_=>{message.msj="";},2000);
-
   }else {
-    message={msj:"Sigue Intentando",point:point};
-    nameCoder.val("");
     intentos++;
+    message={msj:`Sigue Intentando, te quedan ${5-intentos} intentos`,point:point};
+    nameCoder.val("");
+    console.log(intentos);
+
     if(intentos==5){
-      message={msj:"",point:point-1};
+      message={msj:"Consumiste tus 5 intentos :(",point:point-1};
       setTimeout(update,2000);
       intentos=0;
     }
