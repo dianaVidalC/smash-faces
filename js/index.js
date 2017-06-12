@@ -10,7 +10,8 @@ const render = (root)=>{
 
 const state = [{
     coder : null,
-    selectedCoder : null
+    selectedCoder : null,
+    selectedSede : null
 }];
 $( _ => {
     getJSON('coders.json',(error, json)=>{

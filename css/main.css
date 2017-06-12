@@ -7,6 +7,10 @@ body {
 .play-container {
   width: 100%;
 }
+.select-container {
+  display: flex;
+  justify-content: space-around;
+}
 .container {
   margin-top: 50px;
   display: flex;

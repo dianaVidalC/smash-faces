@@ -7,6 +7,7 @@ const coderImage = (coder,update)=>{
   const coderImg = $(`<img src="images/${coder.sede}/${coder.image}" alt="coder laboratoria">`);
 
   containerImg.append(coderImg);
+  console.log(update);
   return containerImg;
 }
 
@@ -16,16 +17,23 @@ const resultPlay = (checkName,update)=>{
   return text;
 }
 
+const resultPoints = (checkPoint)=>{
+  const points = $(`<span>Puntos: ${checkPoint} puntos</span>`);
+  return points;
+}
+
 const reRender = (coderContainer,sede, update)=>{
   coderContainer.empty();
   const coderBySede = filterBySede(state.coder,sede);
   coderContainer.append(coderImage(coderBySede,update));
 }
 
-const renderText = (textResult, name, update)=>{
+const renderText = (textResult, name, points, update)=>{
   textResult.empty();
-  const check = checkName(state.selectedCoder,name);
-  textResult.append(resultPlay(check,update));
+  points.empty();
+  const check = checkName(state.selectedCoder,name,update);
+  textResult.append(resultPlay(check.msj,update));
+  points.append(resultPoints(check.point));
 }
 
 const Play = (update)=>{
@@ -38,7 +46,6 @@ const Play = (update)=>{
   const option1 = $('<option value="1">Lima</option>');
   const option2 = $('<option value="2">Mexico</option>');
   const divPoints = $('<div></div>');
-  //const points = $(`<span>Puntos: ${points} </span>`);
   const coderContainer = $('<div class="coder-container"></div>');
   const coderSearch = $('<div class="coder-search"></div>');
   const label = $('<label>Ingresa su nombre:</label>');
@@ -61,17 +68,17 @@ const Play = (update)=>{
   container.append(coderSearch);
   playContainer.append(container);
 
-
   select.on('change', (e) =>{
     e.preventDefault();
     let sede = $('select option:selected').text();
     reRender(coderContainer,sede,update);
+    state.selectedSede = sede;
   });
   //reRender(coderContainer,"",update);
   button.on('click',(e)=>{
     e.preventDefault();
-    const name = input.val();
-    renderText(textResult,name,update);
+    renderText(textResult,input,divPoints,_=>{reRender(coderContainer,state.selectedSede);});
+    //renderPoints(divPoints);
   });
 
   return playContainer;
