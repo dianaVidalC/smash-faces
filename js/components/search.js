@@ -41,11 +41,12 @@ const Play = _=>{
   const container = $('<div class="container"></div>');
   const span = $('<span>Elige tu sede:</span>');
   const select = $('<select id="sede"></select>');
-  const option0 = $('<option value="0" hidden>Selecciona una opción</option>');
+  const option0 = $('<option value="0" hidden>Selecciona una sede</option>');
   const option1 = $('<option value="1">Lima</option>');
   const option2 = $('<option value="2">Mexico</option>');
   const divPoints = $('<div></div>');
   const coderContainer = $('<div class="coder-container"></div>');
+  const textImg = $('<span>Seleccionar sede para mostrar coder</span>');
   const coderSearch = $('<div class="coder-search"></div>');
   const label = $('<label>Ingresa su nombre:</label>');
   const input = $('<input type="text" placeholder="Nombre">');
@@ -59,6 +60,7 @@ const Play = _=>{
   selectContainer.append(select);
   selectContainer.append(divPoints);
   playContainer.append(selectContainer);
+  coderContainer.append(textImg);
   container.append(coderContainer);
   coderSearch.append(label);
   coderSearch.append(input);
